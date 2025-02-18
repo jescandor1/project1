@@ -12,8 +12,10 @@ def left_endpoint(x_vals: np.ndarray, func: np.ufunc)->float:
     return approx
 
 def trapezoid(x_vals: np.ndarray, func: np.ufunc) -> float:
-    """
-    Approximates the integral using the Trapezoidal Rule without loops.
-    """
     width = (x_vals[1:] - x_vals[:-1])
+    """Calculates the base of each individual trapezoid by taking the last term of the array and subtracting the prior
+    term, allowing me to get a base value for each trapezoid"""
     return np.sum((func(x_vals[:-1]) + func(x_vals[1:])) / 2 * width)
+    """Takes the height of each point and adds the heights together. Then divides the heights by 2 to get the average
+     height. Average height is then multiplied by the width or base to get the area of the trapezoid. Areas are then
+     summed together"""
