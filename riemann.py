@@ -21,19 +21,11 @@ def trapezoid(x_vals: np.ndarray, func: np.ufunc) -> float:
      summed together"""
 
 def simpson(x_vals: np.ndarray, func: np.ufunc) -> float:
+    a = x_vals[0]
+    b = x_vals[-1]
+    midpoint = (a + b) / 2
+    h = (b - a) / 6
+    integral = h * (func(a) + 4 * func(midpoint) + func(b))
+    return integral
 
-    h = np.diff(x_vals)[0]
-    f_vals = func(x_vals)
-
-    integral = f_vals[0] + f_vals[-1]
-    integral += 4 * np.sum(f_vals[1:-1:2])
-    integral += 2 * np.sum(f_vals[2:-1:2])
-
-    return (h / 3) * integral
-
-import numpy as np
-func = np.sin
-x_vals = np.linspace(0, np.pi, 10001)
-simpson_sum = simpson(x_vals, func)
-print(f"Simpson's: {simpson_sum}")
 
