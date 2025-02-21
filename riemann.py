@@ -20,15 +20,6 @@ def trapezoid(x_vals: np.ndarray, func: np.ufunc) -> float:
      height. Average height is then multiplied by the width or base to get the area of the trapezoid. Areas are then
      summed together"""
 
-
-def left_endpoint(x_vals: np.ndarray, func: np.ufunc)->float:
-
-    difference = np.diff(x_vals)
-    height = func(x_vals[:-1])
-    approx = np.sum(difference * height)
-    return approx
-
-
 def simpson(x_vals: np.ndarray, func: np.ufunc) -> float:
 
     h = np.diff(x_vals)[0]
