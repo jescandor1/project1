@@ -20,26 +20,8 @@ def get_cartesian_coordinates (triangle_coordinates: np.array, barycentric_coord
     to as cartesian/point coordinates"""
     return cartesian_coordinates # (x,y)
     
-def left_endpoint(x_vals: np.ndarray, func: np.ufunc)->float:
+def is_inside_triangle (triangle_coordinates: np.ndarray, point_coordinates: np.ndarray) -> bool:
+    barycentric_coordinates = get_barycentric_coordinates(triangle_coordinates, point_coordinates)
 
-    difference = np.diff(x_vals)
-    height = func(x_vals[:-1])
-    approx = np.sum(difference * height)
-    return approx
+    return np.all(barycentric_coordinates >= 0) and np.all(barycentric_coordinates <= 1)
 
-def simpson(x_vals: np.ndarray, func: np.ufunc) -> float:
-
-    h = np.diff(x_vals)[0]
-    f_vals = func(x_vals)
-
-    integral = f_vals[0] + f_vals[-1]
-    integral += 4 * np.sum(f_vals[1:-1:2])
-    integral += 2 * np.sum(f_vals[2:-1:2])
-
-    return (h / 3) * integral
-
-import numpy as np
-func = np.sin
-x_vals = np.linspace(0, np.pi, 10001)
-simpson_sum = simpson(x_vals, func)
-print(f"Simpson's: {simpson_sum}")
