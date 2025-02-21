@@ -8,7 +8,7 @@ def get_barycentric_coordinates(triangle_coordinates: np.array, point_coordinate
     """
     triangle_coordinates = np.hstack((triangle_coordinates, np.ones((3, 1))))
     point_coordinates = np.append(point_coordinates, 1)
-    barycentric_coordinates = np.linalg.solve(triangle_coordinates, point_coordinates)
+    barycentric_coordinates = np.linalg.solve(triangle_coordinates.T, point_coordinates)
     return barycentric_coordinates
 
 def get_cartesian_coordinates (triangle_coordinates: np.array, barycentric_coordinates: np.array)-> np.array:
