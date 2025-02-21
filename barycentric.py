@@ -6,8 +6,8 @@ def get_barycentric_coordinates(triangle_coordinates: np.array, point_coordinate
     :param point_coordinates: 1d array (x, y)
     :return: 1d array (lambda1, lambda2, lambda3)
     """
-    triangle_coordinates += [1, 1, 1]
-    point_coordinates += [1]
+    triangle_coordinates = np.hstack((triangle_coordinates, np.ones(3, 1)))
+    point_coordinates = np.append(point_coordinates, 1)
     barycentric_coordinates = np.linalg.solve(triangle_coordinates, point_coordinates)
     return barycentric_coordinates
 
