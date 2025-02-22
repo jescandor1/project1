@@ -6,8 +6,6 @@ def get_barycentric_coordinates(triangle_coordinates: np.array, point_coordinate
     :param point_coordinates: 1d array (x, y)
     :return: 1d array (lambda1, lambda2, lambda3)
     """
-    if triangle_coordinates.shape != (3, 2):
-        raise ValueError("triangle_coordinates must be a 3x2 array")
     homogeneous_coordinates = np.concatenate([triangle_coordinates, np.ones((3, 1))], axis=1)
     point_homogeneous = np.append(point_coordinates, 1)
     barycentric_coordinates = np.linalg.lstsq(homogeneous_coordinates.T, point_homogeneous, rcond=None)[0]
