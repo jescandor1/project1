@@ -17,8 +17,9 @@ def get_barycentric_coordinates(triangle_coordinates: np.array, point_coordinate
     return barycentric_coordinates
 
 def get_cartesian_coordinates (triangle_coordinates: np.array, barycentric_coordinates: np.array)-> np.array:
-    """Triangle_coordinates are a 2x3 array (coeff matrix), Barycentric_coordinates are a 1d array (lamda1, lamda2,
-    lamda3)
+    """
+    Triangle_coordinates are a 2x3 array (coeff matrix),
+    Barycentric_coordinates are a 1d array (lamda1, lamda2, lamda3)
     """
     x1, x2, x3 = triangle_coordinates[0]
     y1, y2, y3 = triangle_coordinates[1]

@@ -2,6 +2,7 @@ import numpy as np
 
 def left_endpoint(x_vals: np.ndarray, func: np.ufunc)->float:
     """
+    Riemann approximation using the left endpoint
     :param x_vals: a one-dimensional NumPy array containing the x-values used in approximating the integral
     :param func: function to approximate the integral
     :return: sum approximation using the left endpoint
@@ -32,6 +33,5 @@ def simpson(x_vals: np.ndarray, func: np.ufunc) -> float:
     h = (b - a) / 6
     integral = h * (func(a) + 4*func(midpoint) + func(b))
     return integral
-
 
 
