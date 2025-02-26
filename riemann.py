@@ -13,7 +13,6 @@ def left_endpoint(x_vals: np.ndarray, func: np.ufunc)->float:
     return approx
 
 def trapezoid(x_vals: np.ndarray, func: np.ufunc) -> float:
-    width = (x_vals[1:] - x_vals[:-1])
     """
     Calculates the base of each individual trapezoid by taking the last term of the array and subtracting the prior
     term, allowing me to get a base value for each trapezoid
@@ -22,6 +21,7 @@ def trapezoid(x_vals: np.ndarray, func: np.ufunc) -> float:
     height. Average height is then multiplied by the width or base to get the area of the trapezoid. Areas are then
     summed together.
     """
+    width = (x_vals[1:] - x_vals[:-1])
     return np.sum((func(x_vals[:-1]) + func(x_vals[1:])) / 2 * width)
 
 
