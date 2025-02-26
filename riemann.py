@@ -32,6 +32,7 @@ def simpson(x_vals: np.ndarray, func: np.ufunc) -> float:
     h = (b - a) / 6
     integral = h * (func(a) + 4*func(midpoint) + func(b))
     return integral
+"""A float value will be returned that approximates the integral/area under the curve that is being evaluated."""
 
 
 
