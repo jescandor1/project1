@@ -19,3 +19,13 @@ def trapezoid(x_vals: np.ndarray, func: np.ufunc) -> float:
     """Takes the height of each point and adds the heights together. Then divides the heights by 2 to get the average
      height. Average height is then multiplied by the width or base to get the area of the trapezoid. Areas are then
      summed together"""
+
+def simpson(x_vals: np.ndarray, func: np.ufunc) -> float:
+    a = x_vals[0]
+    b = x_vals[-1]
+    midpoint = (a + b) / 2
+    h = (b - a) / 6
+    integral = h * (func(a) + 4 * func(midpoint) + func(b))
+    return integral
+
+
