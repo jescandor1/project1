@@ -31,10 +31,13 @@ def get_cartesian_coordinates (triangle_coordinates: np.array, barycentric_coord
 
 def is_inside_triangle (triangle_coordinates: np.ndarray, point_coordinates: np.ndarray) -> bool:
     """Determines whether a given point is inside a triangle using barycentric coordinates.
-by taking a 2x3 matrix of the triangles vertexes to see if coordinates lie within vertexes  """
+    by taking a 2x3 matrix of the triangles vertexes to see if coordinates lie within vertexes
+
+    Will return a bool statement of either True or False which will be shown as a point on a graph. Points that lie
+    within the triangle are green and True while points that lie outside the triangle are red and False
+
+    """
     triangle_coordinates = np.reshape(triangle_coordinates, (2, 3))
     barycentric_coordinates = get_barycentric_coordinates(triangle_coordinates, point_coordinates)
 
     return np.all(barycentric_coordinates >= 0) and np.all(barycentric_coordinates <= 1)
-"""Will return a bool statement of either True or False which will be shown as a point on a graph. Points that lie
-within the triangle are green and True while points that lie outside the triangle are red and False"""
